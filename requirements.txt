@@ -1,0 +1,10 @@
+Django>=4.0,<5.0
+gunicorn
+pillow
+tensorflow
+numpy
+matplotlib
+scikit-learn
+seaborn
+opencv-python
+psycopg2-binary 
