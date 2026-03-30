@@ -1,7 +1,7 @@
 Django>=4.0,<5.0
 gunicorn
 pillow
-tensorflow>=2.11,<2.13
+tensorflow==2.10.0
 numpy
 matplotlib
 scikit-learn
