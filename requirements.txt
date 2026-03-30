@@ -1,10 +1,10 @@
 Django>=4.0,<5.0
 gunicorn
 pillow
-tensorflow
+tensorflow-cpu==2.12.0
 numpy
 matplotlib
 scikit-learn
 seaborn
 opencv-python
-psycopg2-binary 
+psycopg2-binary
