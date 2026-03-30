@@ -1,0 +1,68 @@
+{% extends 'diagnosis/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white">
+      <h3 class="mb-0">Chest CT Diagnosis</h3>
+    </div>
+    <div class="card-body">
+
+      <!-- Patient Info -->
+      <h5 class="text-secondary">Patient Details</h5>
+      <p><strong>ID:</strong> {{ patient_id }}</p>
+      <p><strong>Name:</strong> {{ name }}</p>
+      <p><strong>Age:</strong> {{ age }}</p>
+      <p><strong>Gender:</strong> {{ gender }}</p>
+
+      <!-- Prediction Info -->
+      <hr>
+      <h4 class="text-primary">Prediction Result</h4>
+      <p><strong>Diagnosis:</strong> {{ prediction }}</p>
+      <p><strong>Confidence:</strong> {{ confidence|floatformat:2 }}%</p>
+
+      <!-- Uploaded Image -->
+      {% if uploaded_image_url %}
+      <div class="mb-4">
+        <h5 class="text-secondary">Input CT Scan</h5>
+        <img src="/media/{{ uploaded_image_url }}" class="img-fluid rounded border" alt="Uploaded CT Scan">
+      </div>
+      {% endif %}
+
+      <!-- Heatmap Visualization -->
+      {% if heatmap_path %}
+      <div class="mb-4">
+        <h5 class="text-secondary">Visualization</h5>
+        <img src="/media/{{ heatmap_path }}" class="img-fluid rounded border" alt="Heatmap Visualization">
+      </div>
+      {% endif %}
+<!-- Know More Section -->
+      <div class="mt-4">
+        {% if prediction|lower == "normal" %}
+          <div class="alert alert-success">
+            <h5>Normal Scan</h5>
+            <p>No signs of lung cancer detected. Maintain healthy lifestyle habits and schedule regular checkups.</p>
+          </div>
+        {% elif prediction|lower == "adenocarcinoma" %}
+          <a href="{% url 'know_more' 'adenocarcinoma' %}" class="btn btn-info w-100">
+            Know More About Adenocarcinoma
+          </a>
+        {% elif prediction|lower == "large cell carcinoma" %}
+          <a href="{% url 'know_more' 'large cell carcinoma' %}" class="btn btn-info w-100">
+            Know More About Large Cell Carcinoma
+          </a>
+        {% elif prediction|lower == "squamous cell carcinoma" %}
+          <a href="{% url 'know_more' 'squamous cell carcinoma' %}" class="btn btn-info w-100">
+            Know More About Squamous Cell Carcinoma
+          </a>
+        {% endif %}
+      </div>
+      <!-- Action Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'upload_ct' %}" class="btn btn-outline-primary">Analyze Another Scan</a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

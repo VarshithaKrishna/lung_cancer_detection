@@ -1,0 +1,27 @@
+{% extends 'diagnosis/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white">
+      <h3 class="mb-0">About Squamous Cell Carcinoma</h3>
+    </div>
+    <div class="card-body">
+      <h5 class="text-primary">Causes</h5>
+      <p>Strongly linked to heavy smoking, chronic lung irritation, and long-term exposure to carcinogens.</p>
+
+      <h5 class="text-primary mt-4">Concerns</h5>
+      <p>Squamous cell carcinoma usually appears in the central parts of the lungs and can obstruct airways.</p>
+
+      <h5 class="text-primary mt-4">Next Steps</h5>
+      <p>Bronchoscopy and biopsy are often required. Treatment may involve surgery, chemotherapy, or targeted therapy.</p>
+
+      <h5 class="text-primary mt-4">Precautionary Measures</h5>
+      <p>Quit smoking, monitor respiratory health, and seek medical advice if persistent cough or chest pain occurs.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'upload_ct' %}" class="btn btn-outline-primary">Back to Diagnosis</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

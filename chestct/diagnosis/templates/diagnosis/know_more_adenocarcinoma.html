@@ -1,0 +1,27 @@
+{% extends 'diagnosis/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white">
+      <h3 class="mb-0">About Adenocarcinoma</h3>
+    </div>
+    <div class="card-body">
+      <h5 class="text-primary">Causes</h5>
+      <p>Smoking, prolonged exposure to pollutants, genetic predisposition, and occupational hazards.</p>
+
+      <h5 class="text-primary mt-4">Concerns</h5>
+      <p>Adenocarcinoma often develops in the outer regions of the lungs and may spread before symptoms appear.</p>
+
+      <h5 class="text-primary mt-4">Next Steps</h5>
+      <p>Consult a pulmonologist or oncologist. Recommended tests include biopsy, PET scans, and further imaging.</p>
+
+      <h5 class="text-primary mt-4">Precautionary Measures</h5>
+      <p>Quit smoking, avoid secondhand smoke, maintain a healthy diet, and schedule regular screenings.</p>
+
+      <div class="mt-4">
+        <a href="{% url 'upload_ct' %}" class="btn btn-outline-primary">Back to Diagnosis</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
