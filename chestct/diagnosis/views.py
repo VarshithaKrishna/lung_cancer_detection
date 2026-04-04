@@ -112,8 +112,6 @@ def upload_ct(request):
         return render(request, 'diagnosis/result.html', {
             'prediction': pred_label,
             'confidence': confidence,
-            'uploaded_image_url': uploaded_image_url,  # ✅ correct URL
-            'heatmap_path': heatmap_path,
             'patient_id': request.POST.get('patient_id'),
             'name': request.POST.get('name'),
             'age': request.POST.get('age'),
