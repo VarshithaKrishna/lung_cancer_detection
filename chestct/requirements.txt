@@ -4,8 +4,4 @@ pillow
 tensorflow==2.19.0
 keras==3.10.0
 numpy
-matplotlib
 scikit-learn
-seaborn
-opencv-python
-psycopg2-binary
