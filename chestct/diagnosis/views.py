@@ -73,14 +73,17 @@ def upload_ct(request):
         ct_file = request.FILES['ct_image']
 
         # Ensure media directory exists
-        media_dir = os.path.join(settings.BASE_DIR, "media")
+        media_dir = settings.MEDIA_ROOT
         os.makedirs(media_dir, exist_ok=True)
 
         # Save uploaded file
-        upload_path = os.path.join(media_dir, f"uploaded_{ct_file.name}")
+        uploaded_filename = f"uploaded_{ct_file.name}"
+        upload_path = os.path.join(settings.MEDIA_ROOT, uploaded_filename)
         with open(upload_path, 'wb+') as destination:
             for chunk in ct_file.chunks():
                 destination.write(chunk)
+
+        uploaded_image_url = settings.MEDIA_URL + uploaded_filename
 
         # Preprocess
         img_raw = Image.open(upload_path).convert("RGB").resize(img_size)
@@ -104,12 +107,12 @@ def upload_ct(request):
             "largecellcarcinoma": "heatmaps/largecell.png",
             "squamouscellcarcinoma": "heatmaps/squamous.png",
         }
-        heatmap_path = heatmap_map.get(normalized_label, None)
+        heatmap_path = heatmap_map.get(normalized_label)
 
         return render(request, 'diagnosis/result.html', {
             'prediction': pred_label,
             'confidence': confidence,
-            'uploaded_image_url': f"uploaded_{ct_file.name}",  # relative to MEDIA_URL
+            'uploaded_image_url': uploaded_image_url,  # ✅ correct URL
             'heatmap_path': heatmap_path,
             'patient_id': request.POST.get('patient_id'),
             'name': request.POST.get('name'),
