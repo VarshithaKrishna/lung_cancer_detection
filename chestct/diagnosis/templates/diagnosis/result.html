@@ -1,5 +1,4 @@
 {% extends 'diagnosis/base.html' %}
-{% load static %}
 {% block content %}
 <div class="container mt-5">
   <div class="card shadow-lg border-0">
@@ -20,22 +19,6 @@
       <h4 class="text-primary">Prediction Result</h4>
       <p><strong>Diagnosis:</strong> {{ prediction }}</p>
       <p><strong>Confidence:</strong> {{ confidence|floatformat:2 }}%</p>
-
-      <!-- Uploaded Image -->
-      {% if uploaded_image_url %}
-      <div class="mb-4">
-        <h5 class="text-secondary">Input CT Scan</h5>
-        <img src="{{ uploaded_image_url }}" class="img-fluid rounded border" alt="Uploaded CT Scan">
-      </div>
-      {% endif %}
-
-      <!-- Heatmap Visualization -->
-      {% if heatmap_path %}
-      <div class="mb-4">
-        <h5 class="text-secondary">Visualization</h5>
-        <img src="{% static heatmap_path %}" class="img-fluid rounded border" alt="Heatmap Visualization">
-      </div>
-      {% endif %}
 
       <!-- Know More Section -->
       <div class="mt-4">
