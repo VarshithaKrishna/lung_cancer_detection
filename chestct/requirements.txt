@@ -9,4 +9,3 @@ scikit-learn
 seaborn
 opencv-python
 psycopg2-binary
-whitenoise==6.6.0
