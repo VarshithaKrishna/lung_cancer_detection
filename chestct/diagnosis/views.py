@@ -1,14 +1,10 @@
 import numpy as np
-import cv2
-import joblib
 import os
 from PIL import Image
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-import matplotlib.pyplot as plt
-import seaborn as sns
 import random
 # --- Auth views ---
 def register_user(request):
@@ -52,8 +48,9 @@ def know_more(request, diagnosis):
     return redirect('home')
 
 # --- Load model + metadata once ---
-model_path = os.path.join(settings.BASE_DIR, 'diagnosis', 'chest_ct_model.h5')
-meta_path = os.path.join(settings.BASE_DIR, 'diagnosis', 'model_metadata.joblib')
+
+
+
 
 # --- CT Upload + Prediction ---
 import random
